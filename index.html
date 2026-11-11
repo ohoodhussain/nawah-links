@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>أكاديمية نواة | روابط</title>
+<meta name="description" content="أكاديمية نواة لتحليل البيانات: معسكر تحليل البيانات والمتجر.">
+<meta name="theme-color" content="#031017">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='10 -4 80 80'%3E%3Cpath d='M10 36A40 40 0 0 0 90 36H73A23 23 0 0 1 27 36Z' fill='%23fff'/%3E%3Ccircle cx='50' cy='36' r='10' fill='%2318A57A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#031017; --bg2:#052a2f;
+    --card:#0a2027; --card2:#0e2a31; --line:#17403f;
+    --emerald:#087967; --hi:#1d9a83; --bright:#3fc1a4; --mint:#bde2d9; --core:#18A57A;
+    --text:#ffffff; --muted:#8fb5ae; --dim:#5a7f7a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg)}
+  body{
+    min-height:100vh; min-height:100dvh;
+    font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;
+    color:var(--text); background:var(--bg);
+    display:flex; justify-content:center;
+    padding:48px 16px 40px; overflow-x:hidden; position:relative;
+  }
+  /* soft emerald glows */
+  body::before,body::after{
+    content:""; position:fixed; border-radius:50%; pointer-events:none; z-index:0; filter:blur(10px);
+  }
+  body::before{width:520px;height:520px;inset-block-start:-260px;inset-inline-end:-200px;
+    background:radial-gradient(circle,rgba(24,165,122,.28),rgba(8,121,103,0) 68%)}
+  body::after{width:460px;height:460px;inset-block-end:-240px;inset-inline-start:-200px;
+    background:radial-gradient(circle,rgba(29,154,131,.18),rgba(8,121,103,0) 70%)}
+  .rings{position:fixed;inset-block-start:-180px;inset-inline-end:-180px;width:440px;height:440px;z-index:0;opacity:.35;pointer-events:none}
+
+  main{position:relative;z-index:1;width:100%;max-width:440px;display:flex;flex-direction:column;align-items:center}
+
+  /* header */
+  .avatar{
+    width:96px;height:96px;border-radius:50%;
+    background:radial-gradient(circle at 50% 40%,#0e2a31,#061820);
+    border:1px solid var(--line);
+    display:grid;place-items:center;
+    box-shadow:0 0 0 6px rgba(24,165,122,.06),0 18px 40px -12px rgba(24,165,122,.45);
+    animation:rise .6s ease both;
+  }
+  .avatar svg{width:58px;height:auto;margin-block-start:6px}
+  .avatar .core{transform-origin:50px 36px;animation:pulse 3.2s ease-in-out infinite}
+  h1{font-family:"Alexandria",sans-serif;font-weight:800;font-size:26px;margin-block-start:18px;letter-spacing:0;animation:rise .6s .05s ease both}
+  .latin{margin-block-start:6px;opacity:.55;animation:rise .6s .1s ease both}
+  .latin svg{height:12px;width:auto;display:block}
+  .bio{color:var(--muted);font-size:15px;line-height:1.8;text-align:center;margin-block-start:12px;max-width:340px;animation:rise .6s .15s ease both}
+
+  /* featured bootcamp card */
+  .feature{
+    margin-block-start:30px;width:100%;
+    position:relative;border-radius:24px;padding:22px 20px 20px;
+    background:linear-gradient(160deg,#0e3236 0%,#0a2027 55%,#081b22 100%);
+    border:1px solid #1f5a52;
+    box-shadow:0 30px 60px -30px rgba(24,165,122,.55);
+    overflow:hidden;animation:rise .6s .2s ease both;
+  }
+  .feature::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;
+    inset-block-start:-130px;inset-inline-start:-90px;
+    background:radial-gradient(circle,rgba(63,193,164,.22),transparent 70%)}
+  .tag-row{display:flex;flex-wrap:wrap;gap:6px;position:relative}
+  .pill{font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:999px;border:1px solid var(--line);color:var(--mint);background:rgba(3,16,23,.45);white-space:nowrap}
+  .pill.live{border-color:rgba(63,193,164,.55);color:var(--bright);display:inline-flex;align-items:center;gap:7px}
+  .pill.live i{width:7px;height:7px;border-radius:50%;background:var(--bright);box-shadow:0 0 0 0 rgba(63,193,164,.7);animation:ping 1.8s infinite}
+  .feature h2{font-family:"Alexandria",sans-serif;font-weight:700;font-size:22px;line-height:1.45;margin-block-start:16px;position:relative}
+  .feature p.lead{color:var(--muted);font-size:14.5px;line-height:1.8;margin-block-start:6px;position:relative}
+
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-block-start:16px;position:relative}
+  .fact{background:rgba(3,16,23,.5);border:1px solid var(--line);border-radius:14px;padding:10px 6px;text-align:center}
+  .fact b{display:block;font-family:"Alexandria",sans-serif;font-size:20px;font-weight:700;color:var(--bright);line-height:1.3}
+  .fact span{font-size:12px;color:var(--muted)}
+
+  .countdown{margin-block-start:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;position:relative;
+    padding:10px 14px;border-radius:14px;background:rgba(8,121,103,.14);border:1px dashed rgba(63,193,164,.35)}
+  .countdown .lbl{font-size:13px;color:var(--mint)}
+  .countdown .t{display:flex;gap:10px;direction:rtl}
+  .countdown .u{text-align:center;min-width:34px}
+  .countdown .u b{display:block;font-family:"Alexandria",sans-serif;font-size:17px;font-weight:700;font-variant-numeric:tabular-nums}
+  .countdown .u small{font-size:10.5px;color:var(--dim)}
+
+  .cta{
+    margin-block-start:16px;position:relative;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    width:100%;padding:15px 18px;border-radius:16px;
+    font-family:"Alexandria",sans-serif;font-weight:700;font-size:17px;color:#fff;text-decoration:none;
+    background:linear-gradient(135deg,var(--core),var(--emerald));
+    box-shadow:0 12px 28px -10px rgba(24,165,122,.8),inset 0 1px 0 rgba(255,255,255,.18);
+    transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .cta:hover{transform:translateY(-2px);box-shadow:0 18px 34px -12px rgba(24,165,122,.95),inset 0 1px 0 rgba(255,255,255,.2)}
+  .cta svg{width:18px;height:18px}
+  .note{font-size:12.5px;color:var(--dim);text-align:center;margin-block-start:10px;position:relative}
+
+  /* secondary links */
+  .links{width:100%;display:flex;flex-direction:column;gap:12px;margin-block-start:16px}
+  .link{
+    display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:18px;
+    background:var(--card);border:1px solid var(--line);color:var(--text);text-decoration:none;
+    transition:border-color .18s ease,background .18s ease,transform .18s ease;
+    animation:rise .6s .28s ease both;
+  }
+  .link:hover{border-color:var(--hi);background:var(--card2);transform:translateY(-2px)}
+  .ico{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(8,121,103,.18);border:1px solid rgba(29,154,131,.35);color:var(--bright)}
+  .ico svg{width:22px;height:22px}
+  .link .txt{flex:1;min-width:0}
+  .link .txt b{display:block;font-family:"Alexandria",sans-serif;font-weight:600;font-size:16px}
+  .link .txt span{display:block;font-size:13px;color:var(--muted);margin-block-start:2px}
+  .arrow{flex:none;color:var(--dim);transition:color .18s ease,transform .18s ease}
+  .arrow svg{width:18px;height:18px;display:block}
+  .link:hover .arrow{color:var(--bright);transform:translateX(-3px)}
+
+  footer{margin-block-start:36px;font-size:12px;color:var(--dim);text-align:center;animation:rise .6s .35s ease both}
+
+  a:focus-visible{outline:2px solid var(--bright);outline-offset:3px}
+
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+  @keyframes ping{0%{box-shadow:0 0 0 0 rgba(63,193,164,.6)}80%,100%{box-shadow:0 0 0 8px rgba(63,193,164,0)}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  @media (max-width:360px){.feature h2{font-size:20px}.fact b{font-size:18px}.countdown{flex-direction:column;align-items:stretch;text-align:center}.countdown .t{justify-content:center}}
+</style>
+</head>
+<body>
+<svg class="rings" viewBox="0 0 440 440" aria-hidden="true" fill="none" stroke="#1d9a83">
+  <circle cx="220" cy="220" r="120" stroke-width="1"/><circle cx="220" cy="220" r="165" stroke-width=".8"/><circle cx="220" cy="220" r="210" stroke-width=".6"/>
+</svg>
+
+<main>
+  <div class="avatar" aria-hidden="true">
+    <svg viewBox="10 -4 80 80"><path d="M10 36A40 40 0 0 0 90 36H73A23 23 0 0 1 27 36Z" fill="#FFFFFF"/><circle class="core" cx="50" cy="36" r="10" fill="#18A57A"/></svg>
+  </div>
+  <h1>أكاديمية نواة</h1>
+  <div class="latin" aria-label="NAWAH">
+    <svg viewBox="0 0 160 28" fill="#FFFFFF" aria-hidden="true"><g transform="scale(0.7)"><path d="M0 0h6v40H0zM26 0h6v40h-6zM0 0h7.5L32 40h-7.5z"/><path transform="translate(42 0)" d="M0 40L15 0h6l15 40h-6.5L18 9.33 6.5 40z"/><path transform="translate(80 0)" d="M0 0h6.5L18 30.67 29.5 0H36L21 40h-6z"/><path transform="translate(110 0)" d="M0 0h6.5L18 30.67 29.5 0H36L21 40h-6z"/><path transform="translate(148 0)" d="M0 40L15 0h6l15 40h-6.5L18 9.33 6.5 40z"/><path transform="translate(194 0)" d="M0 0h6v40H0zM26 0h6v40h-6zM0 17h32v6H0z"/></g></svg>
+  </div>
+  <p class="bio">نساعدك تنتقل من «تعلمت تحليل البيانات» إلى مرشح قوي لأول وظيفة محلل بيانات.</p>
+
+  <section class="feature" aria-labelledby="bc-title">
+    <div class="tag-row">
+      <span class="pill live"><i></i>التسجيل مفتوح</span>
+      <span class="pill">الدفعة 15</span>
+      <span class="pill">أونلاين</span>
+    </div>
+    <h2 id="bc-title">معسكر تحليل البيانات</h2>
+    <p class="lead">برنامج تطبيقي مكثف بمشاريع حقيقية لملف أعمالك، ومتابعة فردية كل أسبوع.</p>
+
+    <div class="facts">
+      <div class="fact"><b>7</b><span>أسابيع</span></div>
+      <div class="fact"><b>4</b><span>مشاريع حقيقية</span></div>
+      <div class="fact"><b>7</b><span>مقاعد فقط</span></div>
+    </div>
+
+    <div class="countdown" id="countdown">
+      <span class="lbl">تبدأ الدفعة 1 ديسمبر</span>
+      <div class="t">
+        <div class="u"><b id="cd-d">--</b><small>يوم</small></div>
+        <div class="u"><b id="cd-h">--</b><small>ساعة</small></div>
+        <div class="u"><b id="cd-m">--</b><small>دقيقة</small></div>
+      </div>
+    </div>
+
+    <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSeTUWUUksG7dOzO5FlfIB39yxOZBhGcQw8XbYEz2cnAntb6Ng/viewform" target="_blank" rel="noopener">
+      قدّم طلب الانضمام
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+    </a>
+    <p class="note">نراجع الطلبات ونتواصل مع المرشحين المناسبين</p>
+  </section>
+
+  <nav class="links" aria-label="روابط">
+    <a class="link" href="https://nawahacademy.com" target="_blank" rel="noopener">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 5.5 4h13L20 9.5"/><path d="M4 9.5a2.7 2.7 0 0 0 5.33 0 2.7 2.7 0 0 0 5.34 0 2.7 2.7 0 0 0 5.33 0"/><path d="M5 12.5V20h14v-7.5"/><path d="M10 20v-4.5h4V20"/></svg>
+      </span>
+      <span class="txt"><b>متجر أكاديمية نواة</b><span>المعسكر، القوالب والموارد الرقمية</span></span>
+      <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></span>
+    </a>
+  </nav>
+
+  <footer>© <span id="yr">2026</span> أكاديمية نواة</footer>
+</main>
+
+<script>
+  (function(){
+    var start = new Date("2026-12-01T00:00:00+03:00").getTime();
+    var box = document.getElementById("countdown");
+    function pad(n){return n<10?"0"+n:""+n}
+    function tick(){
+      var ms = start - Date.now();
+      if (ms <= 0){ box.style.display = "none"; return; }
+      var m = Math.floor(ms/60000);
+      document.getElementById("cd-d").textContent = Math.floor(m/1440);
+      document.getElementById("cd-h").textContent = pad(Math.floor(m%1440/60));
+      document.getElementById("cd-m").textContent = pad(m%60);
+    }
+    tick(); setInterval(tick, 30000);
+    document.getElementById("yr").textContent = new Date().getFullYear();
+  })();
+</script>
+</body>
+</html>
