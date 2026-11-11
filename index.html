@@ -97,7 +97,16 @@
   }
   .cta:hover{transform:translateY(-2px);box-shadow:0 18px 34px -12px rgba(24,165,122,.95),inset 0 1px 0 rgba(255,255,255,.2)}
   .cta svg{width:18px;height:18px}
-  .note{font-size:12.5px;color:var(--dim);text-align:center;margin-block-start:10px;position:relative}
+  .note{font-size:12.5px;line-height:1.7;color:var(--muted);text-align:center;margin-block-start:10px;position:relative}
+  .price{margin-block-start:14px;display:flex;align-items:baseline;justify-content:space-between;gap:10px;position:relative;
+    padding:0 4px}
+  .price span{font-size:13px;color:var(--mint)}
+  .price b{font-family:"Alexandria",sans-serif;font-weight:700;font-size:22px;color:var(--text);font-variant-numeric:tabular-nums}
+  .price b small{font-family:"IBM Plex Sans Arabic",sans-serif;font-size:13px;font-weight:500;color:var(--muted);margin-inline-start:4px}
+  .countdown.done{justify-content:center}
+  .countdown .msg{display:none;font-family:"Alexandria",sans-serif;font-weight:600;font-size:14px;color:var(--bright);text-align:center}
+  .countdown.done .lbl,.countdown.done .t{display:none}
+  .countdown.done .msg{display:block}
 
   /* secondary links */
   .links{width:100%;display:flex;flex-direction:column;gap:12px;margin-block-start:16px}
@@ -158,20 +167,28 @@
       <div class="fact"><b>7</b><span>مقاعد فقط</span></div>
     </div>
 
-    <div class="countdown" id="countdown">
+    <!-- Bootcamp start: change data-start for each new cohort (Riyadh time) -->
+    <div class="countdown" id="countdown" data-start="2026-12-01T00:00:00+03:00">
       <span class="lbl">تبدأ الدفعة 1 ديسمبر</span>
       <div class="t">
         <div class="u"><b id="cd-d">--</b><small>يوم</small></div>
         <div class="u"><b id="cd-h">--</b><small>ساعة</small></div>
         <div class="u"><b id="cd-m">--</b><small>دقيقة</small></div>
+        <div class="u"><b id="cd-s">--</b><small>ثانية</small></div>
       </div>
+      <span class="msg">انطلقت الدفعة 15 — تابعنا لموعد الدفعة القادمة</span>
+    </div>
+
+    <div class="price">
+      <span>رسوم المعسكر</span>
+      <b>2,999<small>ريال</small></b>
     </div>
 
     <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSeTUWUUksG7dOzO5FlfIB39yxOZBhGcQw8XbYEz2cnAntb6Ng/viewform" target="_blank" rel="noopener">
       قدّم طلب الانضمام
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
     </a>
-    <p class="note">نراجع الطلبات ونتواصل مع المرشحين المناسبين</p>
+    <p class="note">بعد تعبئة النموذج، حنتواصل معاك لتأكيد التسجيل وتوضيح خيارات الدفع</p>
   </section>
 
   <nav class="links" aria-label="روابط">
@@ -179,7 +196,7 @@
       <span class="ico" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5 5.5 4h13L20 9.5"/><path d="M4 9.5a2.7 2.7 0 0 0 5.33 0 2.7 2.7 0 0 0 5.34 0 2.7 2.7 0 0 0 5.33 0"/><path d="M5 12.5V20h14v-7.5"/><path d="M10 20v-4.5h4V20"/></svg>
       </span>
-      <span class="txt"><b>متجر أكاديمية نواة</b><span>المعسكر، القوالب والموارد الرقمية</span></span>
+      <span class="txt"><b>متجر أكاديمية نواة</b><span>قوالب Excel والداشبورد</span></span>
       <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></span>
     </a>
   </nav>
@@ -189,18 +206,20 @@
 
 <script>
   (function(){
-    var start = new Date("2026-12-01T00:00:00+03:00").getTime();
     var box = document.getElementById("countdown");
+    var start = new Date(box.getAttribute("data-start")).getTime();
+    var timer;
     function pad(n){return n<10?"0"+n:""+n}
     function tick(){
       var ms = start - Date.now();
-      if (ms <= 0){ box.style.display = "none"; return; }
-      var m = Math.floor(ms/60000);
-      document.getElementById("cd-d").textContent = Math.floor(m/1440);
-      document.getElementById("cd-h").textContent = pad(Math.floor(m%1440/60));
-      document.getElementById("cd-m").textContent = pad(m%60);
+      if (ms <= 0){ box.classList.add("done"); clearInterval(timer); return; }
+      var s = Math.floor(ms/1000);
+      document.getElementById("cd-d").textContent = Math.floor(s/86400);
+      document.getElementById("cd-h").textContent = pad(Math.floor(s%86400/3600));
+      document.getElementById("cd-m").textContent = pad(Math.floor(s%3600/60));
+      document.getElementById("cd-s").textContent = pad(s%60);
     }
-    tick(); setInterval(tick, 30000);
+    tick(); timer = setInterval(tick, 1000);
     document.getElementById("yr").textContent = new Date().getFullYear();
   })();
 </script>
