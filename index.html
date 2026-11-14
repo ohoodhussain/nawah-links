@@ -55,13 +55,23 @@
   .bio{color:var(--muted);font-size:15px;line-height:1.8;text-align:center;margin-block-start:12px;max-width:340px;animation:rise .6s .15s ease both}
 
   /* featured bootcamp card */
+  .feature-wrap{position:relative;width:100%;margin-block-start:30px;animation:rise .6s .2s ease both}
+  .sticker{
+    position:absolute;z-index:2;inset-block-start:-20px;inset-inline-end:-8px;
+    font-family:"Alexandria",sans-serif;font-weight:700;font-size:16px;color:#fff;white-space:nowrap;
+    padding:9px 20px;border-radius:999px;
+    background:#d4202a;border:2px solid #ff4d55;
+    box-shadow:0 12px 26px -8px rgba(212,32,42,.85),inset 0 1px 0 rgba(255,255,255,.25);
+    transform:rotate(-4deg);animation:nudge 2.8s ease-in-out infinite;
+  }
+  @keyframes nudge{0%,100%{transform:rotate(-4deg) scale(1)}50%{transform:rotate(-4deg) scale(1.06)}}
   .feature{
-    margin-block-start:30px;width:100%;
-    position:relative;border-radius:24px;padding:22px 20px 20px;
+    width:100%;
+    position:relative;border-radius:24px;padding:38px 20px 20px;
     background:linear-gradient(160deg,#0e3236 0%,#0a2027 55%,#081b22 100%);
     border:1px solid #1f5a52;
     box-shadow:0 30px 60px -30px rgba(24,165,122,.55);
-    overflow:hidden;animation:rise .6s .2s ease both;
+    overflow:hidden;
   }
   .feature::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;
     inset-block-start:-130px;inset-inline-start:-90px;
@@ -80,9 +90,9 @@
 
   .countdown{margin-block-start:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;position:relative;
     padding:10px 14px;border-radius:14px;background:rgba(8,121,103,.14);border:1px dashed rgba(63,193,164,.35)}
-  .countdown .lbl{font-size:13px;color:var(--mint)}
-  .countdown .t{display:flex;gap:10px;direction:rtl}
-  .countdown .u{text-align:center;min-width:34px}
+  .countdown .lbl{font-size:13px;color:var(--mint);white-space:nowrap}
+  .countdown .t{display:flex;gap:6px;direction:rtl}
+  .countdown .u{text-align:center;min-width:30px}
   .countdown .u b{display:block;font-family:"Alexandria",sans-serif;font-size:17px;font-weight:700;font-variant-numeric:tabular-nums}
   .countdown .u small{font-size:10.5px;color:var(--dim)}
 
@@ -152,6 +162,9 @@
   </div>
   <p class="bio">نساعدك تنتقل من «تعلمت تحليل البيانات» إلى مرشح قوي لأول وظيفة محلل بيانات.</p>
 
+  <div class="feature-wrap">
+  <!-- Seats-left sticker: change the text when seats change -->
+  <span class="sticker">باقي مقعدين فقط</span>
   <section class="feature" aria-labelledby="bc-title">
     <div class="tag-row">
       <span class="pill live"><i></i>التسجيل مفتوح</span>
@@ -190,6 +203,7 @@
     </a>
     <p class="note">بعد تعبئة النموذج، حنتواصل معاك لتأكيد التسجيل وتوضيح خيارات الدفع</p>
   </section>
+  </div>
 
   <nav class="links" aria-label="روابط">
     <a class="link" href="https://nawahacademy.com" target="_blank" rel="noopener">
